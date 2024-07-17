@@ -7,14 +7,14 @@ class BaseScreen:
     def show(self):
         raise NotImplementedError("Subclass must implement abstract method")
 
-class CadastroScreen(BaseScreen):
+class PrincipalScreen(BaseScreen):
     def __init__(self, page: ft.Page):
         super().__init__(page)
 
     def show(self):
         self.page.title = "Cadastro"
 
-        def on_register_click(e):
+        """ def on_register_click(e):
             # Logic to register the user can be added here
             self.page.go('/principal')
 
@@ -63,7 +63,7 @@ class CadastroScreen(BaseScreen):
 def main(page: ft.Page):
     page.window_width = 400
     page.window_height = 600
-    cadastro_screen = CadastroScreen(page)
-    cadastro_screen.show()
+    cadastro_screen = PrincipalScreen(page)
+    cadastro_screen.show() """
 
-ft.app(target=main)
+#ft.app(target=main)

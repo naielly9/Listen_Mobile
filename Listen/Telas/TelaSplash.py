@@ -1,6 +1,6 @@
 import flet as ft
 import time
-from .TelaLogin import LoginScreen
+#from .TelaLogin import LoginScreen
 
 class BaseScreen:
     def __init__(self, page: ft.Page):
@@ -19,7 +19,7 @@ class SplashScreen(BaseScreen):
             width=self.page.window.width,
             height=self.page.window.height,
             gradient=ft.LinearGradient(
-                colors=["#992084", "#C12070", "#040317"],
+                colors=["#ec4899", "#db2777", "#be185d"],
                 begin=ft.Alignment(-1, -1),  # top-left
                 end=ft.Alignment(1, 1)  # bottom-right
             ),
@@ -49,6 +49,6 @@ class SplashScreen(BaseScreen):
             time.sleep(0.05)
         
         # Transição para a tela de login
-        self.page.clean()
-        login_screen = LoginScreen(self.page)
-        login_screen.show()
+       # self.page.clean()
+       # login_screen = LoginScreen(self.page)
+       # login_screen.show()

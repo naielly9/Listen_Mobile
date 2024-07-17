@@ -4,8 +4,8 @@ from Telas.TelaCadastro import CadastroScreen
 
 
 def main(page: ft.Page):
-    # splash_screen = SplashScreen(page)
-    # splash_screen.show()
+    #splash_screen = SplashScreen(page)
+    #splash_screen.show()
 
     splash_screen = CadastroScreen(page)
     splash_screen.show()
