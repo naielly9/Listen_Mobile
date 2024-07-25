@@ -26,6 +26,12 @@ class Database:
         self.cursor.execute("SELECT * FROM users WHERE username = ? AND password = ?", 
                             (username, password))
         return self.cursor.fetchone()
+    
+    def validate_user(self, username, password):
+        self.cursor.execute("SELECT * FROM users WHERE username = ? AND password = ?", 
+                            (username, password))
+        return self.cursor.fetchone() is not None
+
 
     def close(self):
         self.conn.close()

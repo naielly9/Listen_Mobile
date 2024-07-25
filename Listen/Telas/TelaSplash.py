@@ -1,6 +1,6 @@
 import flet as ft
 import time
-#from .TelaLogin import LoginScreen
+from .TelaLogin import LoginScreen
 
 class BaseScreen:
     def __init__(self, page: ft.Page):
@@ -49,6 +49,6 @@ class SplashScreen(BaseScreen):
             time.sleep(0.05)
         
         # Transição para a tela de login
-       # self.page.clean()
-       # login_screen = LoginScreen(self.page)
-       # login_screen.show()
+        self.page.clean()
+        login_screen = LoginScreen(self.page)
+        login_screen.show()
