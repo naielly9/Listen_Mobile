@@ -1,0 +1,1 @@
+horizontal_alignment=ft.CrossAxisAlignment.CENTER,

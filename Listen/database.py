@@ -1,5 +1,5 @@
 import sqlite3
-
+#extensao sql lite e sqlite3 editor
 class Database:
     def __init__(self, db_name='users.db'):
         self.conn = sqlite3.connect(db_name)
@@ -30,7 +30,8 @@ class Database:
     def validate_user(self, username, password):
         self.cursor.execute("SELECT * FROM users WHERE username = ? AND password = ?", 
                             (username, password))
-        return self.cursor.fetchone() is not None
+        return self.cursor.fetchone() 
+        # is not None
 
 
     def close(self):

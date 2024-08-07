@@ -1,11 +1,11 @@
 import flet as ft
-from .TelaPrincipal import PrincipalScreen
 from database import Database
 
 class BaseScreen:
     def __init__(self, page: ft.Page):
         self.page = page
-        
+        page.window_width = 400
+        page.window_height = 800
     def show(self):
         raise NotImplementedError("Subclass must implement abstract method")
 
@@ -21,12 +21,22 @@ class CadastroScreen(BaseScreen):
 
         if username and email and password:
             self.db.add_user(username, email, password)
+            self.page.snack_bar = ft.SnackBar(ft.Text("Cadastrado com sucesso!"), open=True)
+            self.page.update()
             # Transição para a tela principal
             self.page.clean() 
-            Principal_Screen = PrincipalScreen(self.page)
-            Principal_Screen.show()
+            from .TelaLogin import LoginScreen
+            login_screen = LoginScreen(self.page)
+            login_screen.show()
         else:
             self.page.snack_bar = ft.SnackBar(ft.Text("Preencha os dados de usúario, e-mail e a senha"), open=True)
+
+    def on_back_text_click(self, e):
+        
+        self.page.clean()
+        from .TelaLogin import LoginScreen
+        login_screen = LoginScreen(self.page)
+        login_screen.show()
 
     def show(self):
         self.page.title = "listen"
@@ -35,7 +45,7 @@ class CadastroScreen(BaseScreen):
                         width=200,
                         border_color='#9ca3af',
                         focused_color='#e5e7eb',
-                        focused_bgcolor=ft.colors.TRANSPARENT, 
+                        focused_bgcolor=ft.colors.WHITE, 
                         filled=False, 
                         cursor_color='#e5e7eb',
                         color='#e5e7eb',
@@ -46,7 +56,7 @@ class CadastroScreen(BaseScreen):
                         width=200,
                         border_color='#9ca3af',
                         focused_color='#e5e7eb',
-                        focused_bgcolor=ft.colors.TRANSPARENT, 
+                        focused_bgcolor=ft.colors.WHITE, 
                         filled=False, 
                         cursor_color='#e5e7eb',
                         color='#e5e7eb',
@@ -57,7 +67,7 @@ class CadastroScreen(BaseScreen):
                         width=200,
                         border_color='#9ca3af',
                         focused_color='#e5e7eb',
-                        focused_bgcolor=ft.colors.TRANSPARENT, 
+                        focused_bgcolor=ft.colors.WHITE, 
                         filled=False, 
                         cursor_color='#e5e7eb',
                         color='#e5e7eb',
@@ -69,9 +79,9 @@ class CadastroScreen(BaseScreen):
             width=self.page.window.width,
             height=self.page.window.height,
             gradient=ft.LinearGradient(
-                colors=["#09090b", "#18181b"],
-                begin=ft.Alignment(-1, -1),  # top-left
-                end=ft.Alignment(1, 1)  # bottom-right
+                colors=["#150c14", "#150c14"],
+                begin=ft.Alignment(-1, -1),  
+                end=ft.Alignment(1, 1)  
             ),
             content=ft.Column(
                 [
@@ -79,7 +89,7 @@ class CadastroScreen(BaseScreen):
                         [
                             ft.Container(),
                             ft.Image(
-                                src="Telas/Imagens/logoHeader.png",
+                                src="Telas/Imagens/logo.png",
                                 width=200,
                                 height=200
                             ),
@@ -96,7 +106,7 @@ class CadastroScreen(BaseScreen):
                         width=200,
                         border_color='#9ca3af',
                         focused_color='#e5e7eb',
-                        focused_bgcolor=ft.colors.TRANSPARENT, 
+                        focused_bgcolor=ft.colors.WHITE, 
                         filled=False, 
                         cursor_color='#e5e7eb',
                         color='#e5e7eb',
@@ -107,8 +117,17 @@ class CadastroScreen(BaseScreen):
                         "Registrar", 
                         on_click=self.on_register_click,
                         style=ft.ButtonStyle(
-                            color='#e5e7eb',
-                            bgcolor='#9ca3af',
+                            color='#C73EAF',
+                            bgcolor=ft.colors.WHITE,
+                            shape=ft.RoundedRectangleBorder(radius=5),
+                             
+                        )
+                    ),
+                    ft.TextButton(
+                        "Voltar para Login",
+                        on_click=self.on_back_text_click,
+                        style=ft.ButtonStyle(
+                            color='#C73EAF',
                             shape=ft.RoundedRectangleBorder(radius=5)  
                         )
                     ),
