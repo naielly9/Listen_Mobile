@@ -1,7 +1,7 @@
 import flet as ft
 from database import Database
 from .TelaPrincipal import PrincipalScreen
-from .TelaCadastro import CadastroScreen
+from .telaCadastro import TelaCadastro
 
 class BaseScreen:
     def __init__(self, page: ft.Page):
@@ -34,9 +34,9 @@ class LoginScreen(BaseScreen):
     def on_register_text_click(self, e):
         #prox. pagina
         self.page.clean()
-        cadastro_screen = CadastroScreen(self.page)
-        cadastro_screen.show()
-
+        Tela_Cadastro = TelaCadastro(self.page)
+        Tela_Cadastro.mostrar()
+        
     def show(self):
         self.page.title = "listen"
         self.username_field =  ft.TextField(
